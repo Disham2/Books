@@ -62,8 +62,8 @@ public class BookControllerTests {
 
     @BeforeEach
     void setUp() {
-        book1= new Book(bookId, "Pega", author);
-        book2= new Book(bookId2, "rust", author2);
+        book1= new Book(bookId, "Pega", 200,  author);
+        book2= new Book(bookId2, "rust", 541,  author2);
 
         bookList.add(book1);
         bookList.add(book2);

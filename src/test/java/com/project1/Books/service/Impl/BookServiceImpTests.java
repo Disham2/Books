@@ -45,9 +45,9 @@ public class BookServiceImpTests {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        book = new Book(bookId, "ML", author);
+        book = new Book(bookId, "ML", 145, author);
 
-        book2 = new Book(bookId2, "IOT", author2);
+        book2 = new Book(bookId2, "IOT", 199, author2);
 
     }
 

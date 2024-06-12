@@ -1,5 +1,6 @@
 package com.project1.Books.controllers;
 
+import com.project1.Books.dto.PatchDto;
 import com.project1.Books.entities.Book;
 import com.project1.Books.exception.BookAlreadyPresentException;
 import com.project1.Books.exception.BookNotFoundException;
@@ -57,6 +58,14 @@ public class BookController extends BadRequestException {
         if (book.isEmpty())
             throw new BookNotFoundException("No books found");
         return ResponseEntity.status(HttpStatus.OK).body(book);
+    }
+
+    @PatchMapping("/books/{id}")
+    public ResponseEntity<Book> updatePrice(@PathVariable("id") UUID id, @RequestBody PatchDto patchDto){
+        log.info("post request recieved");
+        validateReq.verifyPatch(patchDto);
+        Book updatedBook=bookService.patchBook(id, patchDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedBook);
     }
     }
 

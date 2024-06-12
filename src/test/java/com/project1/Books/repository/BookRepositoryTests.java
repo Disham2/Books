@@ -35,7 +35,7 @@ public class BookRepositoryTests {
     public void setUp() throws Exception {
         author = new Author(UUID.randomUUID(), "George", "India");
         uid=UUID.randomUUID();
-        book=new Book(uid, "Java", author);
+        book=new Book(uid, "Java", 250, author);
         bookRepository.save(book);
         System.out.println(book.toString());
     }

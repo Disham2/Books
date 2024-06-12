@@ -19,6 +19,7 @@ public class Book {
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     private String name;
+    private Integer price;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonManagedReference

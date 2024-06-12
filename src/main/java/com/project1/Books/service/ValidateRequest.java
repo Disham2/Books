@@ -1,6 +1,7 @@
 package com.project1.Books.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project1.Books.dto.PatchDto;
 import com.project1.Books.entities.Book;
 import com.project1.Books.exception.UnprocessableEntityException;
 import lombok.extern.slf4j.Slf4j;
@@ -30,5 +31,17 @@ public class ValidateRequest {
             throw new UnprocessableEntityException("Author name cannot be null or empty");
         if (book.getAuthor().getCountry()==null || book.getAuthor().getCountry().trim().isEmpty())
             throw new UnprocessableEntityException("Author country cannot be null or empty");
+        if(book.getPrice()==null || book.getPrice().describeConstable().isEmpty())
+            throw new UnprocessableEntityException("Price cannot be null or empty");
+    }
+
+    public void verifyPatch(PatchDto patchDto){
+        if (null==patchDto.getOp() || patchDto.getOp().trim().isEmpty())
+            throw  new UnprocessableEntityException("Operation cannot be null or empty");
+        if (null==patchDto.getPath() || patchDto.getPath().trim().isEmpty())
+            throw  new UnprocessableEntityException("Path cannot be null or empty");
+        if (null==patchDto.getValue() || patchDto.getValue().describeConstable().isEmpty())
+            throw new UnprocessableEntityException("Value cannot be empty or null");
+
     }
 }
